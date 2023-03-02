@@ -1,0 +1,292 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template for USENIX papers.
+%
+% History:
+%
+% - TEMPLATE for Usenix papers, specifically to meet requirements of
+%   USENIX '05. originally a template for producing IEEE-format
+%   articles using LaTeX. written by Matthew Ward, CS Department,
+%   Worcester Polytechnic Institute. adapted by David Beazley for his
+%   excellent SWIG paper in Proceedings, Tcl 96. turned into a
+%   smartass generic template by De Clarke, with thanks to both the
+%   above pioneers. Use at your own risk. Complaints to /dev/null.
+%   Make it two column with no page numbering, default is 10 point.
+%
+% - Munged by Fred Douglis <douglis@research.att.com> 10/97 to
+%   separate the .sty file from the LaTeX source template, so that
+%   people can more easily include the .sty file into an existing
+%   document. Also changed to more closely follow the style guidelines
+%   as represented by the Word sample file.
+%
+% - Note that since 2010, USENIX does not require endnotes. If you
+%   want foot of page notes, don't include the endnotes package in the
+%   usepackage command, below.
+% - This version uses the latex2e styles, not the very ancient 2.09
+%   stuff.
+%
+% - Updated July 2018: Text block size changed from 6.5" to 7"
+%
+% - Updated Dec 2018 for ATC'19:
+%
+%   * Revised text to pass HotCRP's auto-formatting check, with
+%     hotcrp.settings.submission_form.body_font_size=10pt, and
+%     hotcrp.settings.submission_form.line_height=12pt
+%
+%   * Switched from \endnote-s to \footnote-s to match Usenix's policy.
+%
+%   * \section* => \begin{abstract} ... \end{abstract}
+%
+%   * Make template self-contained in terms of bibtex entires, to allow
+%     this file to be compiled. (And changing refs style to 'plain'.)
+%
+%   * Make template self-contained in terms of figures, to
+%     allow this file to be compiled. 
+%
+%   * Added packages for hyperref, embedding fonts, and improving
+%     appearance.
+%   
+%   * Removed outdated text.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[lettersize,journal]{IEEEtran}
+% \usepackage{usenix2019_v3}
+
+% to be able to draw some self-contained figs
+\usepackage{tikz}
+\usepackage{amsmath}
+
+% inlined bib file
+\usepackage{filecontents}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+% \usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{tabularx}
+\usepackage{subcaption}
+\usepackage{makecell}
+\usepackage{url}
+\usepackage[switch]{lineno}
+% \linenumbers
+\usepackage{listings}
+\usepackage{multirow}
+% \usepackage[xcdraw]{xcolor}
+% \usepackage{graphicx}
+% \usepackage{textcomp}
+% \usepackage{tabularx}
+% \usepackage{adjustbox}
+
+\captionsetup{compatibility=false}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{textcomp}
+
+% \usepackage{bera}% optional: just to have a nice mono-spaced font
+\usepackage{listings}
+% \usepackage{xcolor}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+% %-------------------------------------------------------------------------------
+% \begin{filecontents}{\jobname.bib}
+% %-------------------------------------------------------------------------------
+% @Book{arpachiDusseau18:osbook,
+%   author =       {Arpaci-Dusseau, Remzi H. and Arpaci-Dusseau Andrea C.},
+%   title =        {Operating Systems: Three Easy Pieces},
+%   publisher =    {Arpaci-Dusseau Books, LLC},
+%   year =         2015,
+%   edition =      {1.00},
+%   note =         {\url{http://pages.cs.wisc.edu/~remzi/OSTEP/}}
+% }
+% @InProceedings{waldspurger02,
+%   author =       {Waldspurger, Carl A.},
+%   title =        {Memory resource management in {VMware ESX} server},
+%   booktitle =    {USENIX Symposium on Operating System Design and
+%                   Implementation (OSDI)},
+%   year =         2002,
+%   pages =        {181--194},
+%   note =         {\url{https://www.usenix.org/legacy/event/osdi02/tech/waldspurger/waldspurger.pdf}}}
+% \end{filecontents}
+
+
+\begin{document}
+
+\title{ An Open-Source P4\textsubscript{16} Compiler Backend for Reconfigurable Match-Action Table Switches:Making Networking Innovation Accessible}
+
+\author{Debobroto Das Robin,  Javed I. Khan \\
+Kent State University}
+        % <-this % stops a space
+% \thanks{This paper was produced by the IEEE Publication Technology Group. They are in Piscataway, NJ.}% <-this % stops a space
+% \thanks{Manuscript received April 19, 2021; revised August 16, 2021.}}
+
+% The paper headers
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2021}%
+{Shell \MakeLowercase{\textit{et al.}}: A Sample Article Using IEEEtran.cls for IEEE Journals}
+
+% \IEEEpubid{0000--0000/00\$00.00~\copyright~2021 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+\maketitle
+
+%-------------------------------------------------------------------------------
+\begin{abstract}
+  %-------------------------------------------------------------------------------
+  
+TODO: Write your abstract here
+
+  
+\end{abstract}
+
+\begin{IEEEkeywords}
+  Programmable data plane, Compiler, Programmable switch,  Software-Defined Networking, 
+   P4,   Open-source
+  \end{IEEEkeywords}
+
+\maketitle
+
+
+%-------------------------------------------------------------------------------
+\section{Introduction}
+%-------------------------------------------------------------------------------
+TODO write intro section here. You can add as many section you want with \\section command. 
+
+
+
+\subsection{Sub section 1}\label{Subsection1}
+
+You can add sub section here. 
+
+
+\subsection{Sub section 2}\label{Subsection2}
+
+You can add sub section 2 here. Or you can add more subsection under any section. I am cross 
+refferencing the sub section here ~\ref{Subsection1}. You just need to add a \textbf{label} on any section or subsection you want 
+refer at any point. Then you need to add a command similar to this \~\\ref{Subsection1}. 
+You can also bold any text with \\textbf\{\} and italic with \\textit\{\}  command. 
+Here is an 
+
+\subsection{Subsection with table}
+
+You can add table also. there are many nice latex table builder online. They will give you option to edit the data in the table manualy 
+And generate the latex code for you. Then you can copy the latex code here. Or you can build the table in power point and 
+export  it a s a figure. Then add the figure in the latex file.
+
+Following is a sample table with latex code. the command for adding figure is given at the later part of the file. 
+
+
+\begin{table}[h]
+  \centering{
+  \begin{tabular}{|l|l|}
+  \hline
+  Column 1 & Column 2 \\ \hline
+  data     & data     \\ \hline
+  data     & data     \\ \hline
+  \end{tabular}
+  }
+\end{table}
+
+
+
+
+
+%========================================================================================================================
+\section{Background} \label{BackgroundSection} 
+%========================================================================================================================
+
+
+Here is an example of how to add a figure. You can add any figure with this command. 
+
+
+
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[trim=0in 1in 0in 0, clip,scale=.345]{Pipeline.pdf}
+ % \caption{\centering V1Model pipeline architecture}
+ \caption{ V1Model pipeline architecture}
+ \label{fig:V1ModelArchitecture}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+%========================================================================================================================
+\section{Conclusion}  \label{Conclusion}
+%========================================================================================================================
+Write your conclusin here. There are some reference to my papers in the compiler.bib file. You can cite them in your report. You can
+also add citation for any other paper or report or website. The command for citing some work is 
+~\cite{robin2022clb}, ~\cite{robin2021p4kp}, ~\cite{robin2022p4te}, ~\cite{robin2022preprint}. But before adding citation you need to add the bibtex entry in the compiler.bib file. 
+
+
+%========================================================================================================================
+\section{How to compile} 
+%========================================================================================================================
+There is a Makefile in the folder. It lists the steps to compile the latex file and generate the pdf. Alternatively you can take the 
+compiler.tex and compiler.bib file and any other figure you want to use; then use the overleaf online editor. That is easier because it will not need
+installing latex in your own PC. Easy writing. 
+
+%-------------------------------------------------------------------------------
+% Don't change the follwoing two lines. They are for formatting the file. 
+\bibliographystyle{unsrt}
+\bibliography{Compiler}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+\subsection{\textit{QoS-Modifer} P4 Program}\label{App:QoSModiferP4Program}
+%==========================================================================
+This is an example if you want to write an algorithm or add source code. 
+
+\small{
+\begin{lstlisting}[linewidth=\columnwidth,breaklines=true,frame = single]
+{
+header control_packet_t {
+bit<8> ipv4_diffserv;
+bit<8> ipv6_trafficClass;
+bit<8> index;
+}
+header ipv6_t {
+bit<4>   version;
+bit<8>   trafficClass;
+bit<20>  flowLabel;
+bit<16>  payloadLen;
+bit<8>   nextHdr;
+bit<8>   hopLimit;
+bit<128> srcAddr;
+bit<128> dstAddr;
+}
+
+}
+\end{lstlisting}
+}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%  LocalWords:  endnotes includegraphics fread ptr nobj noindent
+%%  LocalWords:  pdflatex acks
