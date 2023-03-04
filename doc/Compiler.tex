@@ -166,7 +166,7 @@ As it enables organizations to analyse massive volumes of unstructured data effe
 To swiftly determine whether a review is good or negative, sentiment analysis is required. This paper offers a solution by utilizing the Random Forest Classifier, Word2Vec approach to categorize positive and negative opinion reviews, and by comparing models using preprocessing, feature extraction, and feature selection. Due to their communities' stronger inclination toward data science, such as NLP and Deep Learning for Sentiment Analysis, open-source libraries in programming languages like Python and Java are particularly well suited to creating specialized Sentiment Analysis solutions. But, this demanded a lot of time, money up front, and resources.
 
 \section{Literature Review}
-One of the main tools that a machine may use to comprehend human psychology is sentiment analysis. In order to be used in domains where people were previously required to identify mood or emotion, this technology is currently the subject of substantial research. It plays a key role in chatbot assistants, and when paired with speech recognition technology, it may also be used to replace people in contact centers. 
+One of the main tools that a machine may use to comprehend human psychology is sentiment analysis. In order to be used in domains where people were previously required to identify mood or emotion, this technology is currently the subject of substantial research. It plays a key role in chat bot assistants, and when paired with speech recognition technology, it may also be used to replace people in contact centers. 
 
 \par For NLP, machine learning methods were introduced. Several of the systems created during this time period employed machine learning methods such as decision trees to build systems of hard if-then rules comparable to existing hand-written rules. In NLP, the hidden Markov models employed part-of-speech tagging, and certain statistical models that make probabilistic judgments were developed. For sentiment categorization, there are five different machine learning classifiers: Nave Bayes, K-Nearest Neighbor, Support Vector Machine, Logistic Regression, and Random Forest.[1]
 
@@ -175,7 +175,7 @@ Nandal in this paper classified amazon product reviews for sentiment analysis us
  \par Humera Shaziya classified movie reviews for sentiment analysis using WEKA Tool. They enhanced the earlier work done in sentiment categorization which analyzes opinions which express either positive or negative sentiment
 [3].
 
-Ahmad Kamal designed an opinion mining framework that facilitates objectivity or subjectivity analysis, feature extraction and review summarization.He used supervised machine learning approach for subjectivity and objectivity classification of reviews. The various techniques used by him were Naive Bayes, Decision Tree, Multilayer Perception and Bagging. He also improved mining performance by preventing irrelevant extraction and noise.[4].\par
+Ahmad Kamal designed an opinion mining framework that facilitates objectivity or subjectivity analysis, feature extraction and review summarizing.He used supervised machine learning approach for subjectivity and objectivity classification of reviews. The various techniques used by him were Naive Bayes, Decision Tree, Multi layer Perception and Bagging. He also improved mining performance by preventing irrelevant extraction and noise.[4].\par
 
 Orestes Appel used natural language processing (NLP)essential techniques, a sentiment lexicon enhanced with the assistance of SentiWordNet,and fuzzy sets to estimate the semantic orientation polarity and its intensity for sentences,
 which provides a foundation for computing with sentiments. The proposed hybrid method is applied to three different data-sets and the results achieved are compared to those obtained
@@ -188,7 +188,7 @@ The information was obtained from Booking.com. This dataset includes 515,000 cus
 
 \subsection{Data preparation and data exploration}
 
-Pandas describe method will give some statistical parameters of the dataset like count, mean and standard deviation. To get a quick overview of the dataset we use the dataframe.info() function. Python is an excellent language for data analysis, due to the solid ecosystem of data-centric Python tools.
+Pandas describe method will give some statistical parameters of the data set like count, mean and standard deviation. To get a quick overview of the data set we use the dataframe.info() function. Python is an excellent language for data analysis, due to the solid ecosystem of data-centric Python tools.
 
 \subsection{Data cleaning is the fundamental step in any NLP techniques}
 \begin{itemize}
@@ -202,11 +202,69 @@ Pandas describe method will give some statistical parameters of the dataset like
 
 Random forest is a supervised learning method. The "forest" it creates is an ensemble of decision trees, often trained using the "bagging" approach. The bagging method's main notion is that combining learning models improves the final output. Random forest has the significant benefit of being applicable to both classification and regression issues.
 
-\subsection{Performance Evalutions }
+\subsection{Performance Evaluations }
 
 A receiver operating characteristic (ROC) curve shows how well a model can categorize binary outcomes. An ROC curve is created by displaying a model's false positive rate vs its true positive rate for each feasible cutoff value. The area under the curve (AUC) is frequently measured and used as a statistic to demonstrate how well a model can identify data points. 
+\section{Key Concepts}
+\subsection{Overview of Dataset}
+As we have taken dataset fromm booking.com. The csv file contains 17 fields. The description of each field is as below
+\begin{itemize}
+\item Hotel\_Address: Address of hotel.
+\item Review\_Date: Date when reviewer posted the corresponding review.
+\item Average\_Score: Average Score of the hotel, calculated based on the latest comment in the last year.
+\item Hotel\_Name: Name of Hotel
+\item Reviewer\_Nationality: Nationality of Reviewer
+\item Negative\_Review: Negative Review the reviewer gave to the hotel. If the reviewer does not give the negative review, then it should be: 'No Negative'
+\item ReviewTotalNegativeWordCounts: Total number of words in the negative review.
+\item Positive\_Review: Positive Review the reviewer gave to the hotel. If the reviewer does not give the negative review, then it should be: 'No Positive'
+\item ReviewTotalPositiveWordCounts: Total number of words in the positive review.
+\item Reviewer\_Score: Score the reviewer has given to the hotel, based on his/her experience
+\item TotalNumberofReviewsReviewerHasGiven: Number of Reviews the reviewers has given in the past.
+\item TotalNumberof\_Reviews: Total number of valid reviews the hotel has.
+\item Tags: Tags reviewer gave the hotel.
+\item dayssincereview: Duration between the review date and scrape date.
+\item AdditionalNumberof\_Scoring: There are also some guests who just made a scoring on the service rather than a review. This number indicates how many valid scores without review in there.
+\item lat: Latitude of the hotel
+\item lng: longitude of the hotel
+\end{itemize}
+\subsection{Data Cleaning}
+\subsubsection{Bag Of Words (BOW)}
+Raw text is initially reprocessed and the processing and cleaning techniques.
+\subsubsection{Cleaned or preprocessed }
+Remove all unnecessary special characters, if there are words of other accent like polish, German, Spanish etc. Remove or replace them or add the right Unicode to make them readable for machine. 
+\subsubsection{Normalize all Data}
+Make the data properly in a single case letter, either upper or lower. Preferred lower using .lower() function.
+\subsubsection{Stemming and lemmatization}
+In this methods used by search engines and chat bots to analyze the meaning behind a word. Stemming uses the stem of the word, while lemmatization uses the context in which the word is being used
 
+\subsubsection{Term Frequency and Inverse Dense Frequency(TF-IDF )}
 
+Inverse document frequency looks at how common (or uncommon) a word is amongst the document.
+
+IDF =Log [(\# Number of documents) / (Number of documents containing the word)]
+
+Term frequency works by looking at the frequency of a particular term you are concerned with relative to the document.
+
+	 TF = (Number of repetitions of word in a document) / (\# of words in document).
+  
+For combined TF – IDF = TF(t, d) * IDF(t)
+
+So, using TF and IDF machine makes sense of important words in a document and important words throughout all documents.
+
+\subsubsection{Word2vec}
+Word2vec is a combination of models used to represent distributed representations of words in a corpus C. Word2Vec (W2V) is an algorithm that accepts text corpus as an input and outputs a vector representation for each word.
+
+\section{Infrastructure and Libraries }
+\subsection{NLTK}
+The popular open-source library  Natural Language Toolkit (nltk) makes working with human language data in Python straightforward. It provides a wide range of NLP methods, including as sentiment analysis, part-of-speech tagging, tokenization, stemming, lemmatization, and named entity recognition, among others.
+\subsection{SentimentIntensityAnalyzer}
+It is a rule-based sentiment analyzer, and depending on their semantic orientation, sentences are frequently labeled as either positive or negative. Lastly, we use the polarity scores technique to determine the emotion.
+\subsection{Gensim}
+The gensim library is an open-source Python library for topic modeling and similarity detection in large and complex text datasets.The Gensim algorithms Word2Vec, FastText, Latent Semantic Indexing where it automatically recognize the semantic structure of documents by examining statistical  occurrences patterns within a corpus of training texts. There is no need for human input because these algorithms are unsupervised.
+\subsection{Google Colab}
+Google Colab is a free to use Jupyter notebook environment where we can create and run Python code in a web browser. By making GPU-accelerated computing resources and pre-installed machine learning libraries accessible, it is made to encourage collaborative work and study.It is an effective  tool for projects involving data science and machine learning, especially those that call for access to huge datasets and substantial processing capacity.
+\subsection{GPU machine}
+we are using GPU machines which are  available from a variety of cloud computing providers, such as Amazon Web Services, Microsoft Azure, and Google Cloud. By using GPU machine we can greatly accelerate the training and inference of machine learning models, reducing the time required to train and test models.It is expensive for long term project.
 
 
 
@@ -221,10 +279,10 @@ Sentiment Analysis of Hotel Reviews Using Machine Learning Techniques. Part of t
 \item Shaziya, Humera, G. Kavitha, and Raniah Zaheer. "Text categorization of movie reviews for sentiment analysis." International Journal of Innovative Research in Science, Engineering and Technology 4.11 (2015): 11255-11262.
 
 
-\item Kamal, Ahmad. "Review mining for feature based opinion summarization and visualization." arXiv preprint arXiv:1504.03068 (2015).
+\item Kamal, Ahmad. Review mining for feature based opinion summarization and visualization. arXiv preprint arXiv:1504.03068 (2015).
 
 
-\item Appel, O., Chiclana, F., Carter, J., & Fujita, H. (2016). A hybrid approach to the sentiment analysis problem at the sentence level. Knowledge-Based Systems, 108, 110–124.
+\item Appel, O., Chiclana, F., Carter, J., and Fujita, H. (2016). A hybrid approach to the sentiment analysis problem at the sentence level. Knowledge-Based Systems, 108, 110–124.
 
 \end{enumerate}
 %\subsection{Sub section 2}\label{Subsection2}
